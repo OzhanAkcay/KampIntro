@@ -1,33 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Koleksiyonlar
 {
-    class Program
+    class MyDictionary<Key, Value>
     {
-        static void Main(string[] args)
+        Key[] keys;
+        Value[] values;
+
+        public MyDictionary()
         {
-            //string[] isimler = new string[] { "Engin", "Murat", "Kerem", "Halil" };
-            //Console.WriteLine(isimler[0]);
-            //Console.WriteLine(isimler[1]);
-            //Console.WriteLine(isimler[2]);
-            //Console.WriteLine(isimler[3]);
+            keys = new Key[0];
+            values = new Value[0];
+        }
 
-            //isimler = new string[5];
-            //isimler[4] = "ilker";
-            //Console.WriteLine(isimler[4]);
-            //Console.WriteLine(isimler[0]);
-
-            List<string> isimler2 = new List<string> { "Engin", "Murat", "Kerem", "Halil" };
-            Console.WriteLine(isimler2[0]);
-            Console.WriteLine(isimler2[1]);
-            Console.WriteLine(isimler2[2]);
-            Console.WriteLine(isimler2[3]);
-            isimler2.Add("ilker");
-            Console.WriteLine(isimler2[4]);
-            Console.WriteLine(isimler2[0]);
-
-
+        public void Add(Key key, Value value)
+        {
+            Key[] tempArrayKey = keys;
+            keys = new Key[keys.Length + 1];
+            Value[] tempArrayValue = values;
+            values = new Value[values.Length + 1];
+            for (int i = 0; i < tempArrayKey.Length; i++)
+            {
+                keys[i] = tempArrayKey[i];
+            }
+            keys[keys.Length - 1] = key;
+            for (int i = 0; i < tempArrayValue.Length; i++)
+            {
+                values[i] = tempArrayValue[i];
+            }
+            values[values.Length - 1] = value;
+            Console.WriteLine(key + " " + value + " ");
         }
     }
 }
